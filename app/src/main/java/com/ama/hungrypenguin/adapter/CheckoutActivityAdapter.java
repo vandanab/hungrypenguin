@@ -1,6 +1,7 @@
 package com.ama.hungrypenguin.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.ama.hungrypenguin.R;
 import com.ama.hungrypenguin.model.Dish;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -24,7 +26,7 @@ public class CheckoutActivityAdapter extends RecyclerView.Adapter<CheckoutActivi
 
     public static class CheckoutItemsHolder extends RecyclerView.ViewHolder {
         CardView cv;
-        ImageView thumbnail;
+        ImageView imageUrl;
         TextView name;
         TextView cost;
 
@@ -32,14 +34,14 @@ public class CheckoutActivityAdapter extends RecyclerView.Adapter<CheckoutActivi
         public CheckoutItemsHolder(View itemView) {
             super(itemView);
             cv = (CardView) itemView.findViewById(R.id.cv);
-            thumbnail = (ImageView) itemView.findViewById(R.id.thumbnail);
+            imageUrl = (ImageView) itemView.findViewById(R.id.thumbnail);
             name = (TextView) itemView.findViewById(R.id.title);
             cost = (TextView) itemView.findViewById(R.id.cost);
         }
 
     }
 
-    CheckoutActivityAdapter(List<Dish> dishes) {
+    public CheckoutActivityAdapter(List<Dish> dishes) {
         this.dishes = dishes;
     }
 
@@ -54,7 +56,16 @@ public class CheckoutActivityAdapter extends RecyclerView.Adapter<CheckoutActivi
     @Override
     public void onBindViewHolder(CheckoutItemsHolder holder, int position) {
         // TODO: set binding from dishes
-//        holder.title.setText(dishes.get(position).name)
+
+        Dish currDish  = dishes.get(position);
+
+        holder.name.setText(currDish.name);
+        holder.cost.setText(String.valueOf(currDish.cost));
+
+        Uri uri = Uri.parse(currDish.imageUrl);
+
+        final Context mContext = holder.imageUrl.getContext();
+        Glide.with(mContext).load(uri).asGif().into(holder.imageUrl);
     }
 
     @Override

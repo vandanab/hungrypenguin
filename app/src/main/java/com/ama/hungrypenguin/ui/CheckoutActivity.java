@@ -10,6 +10,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.ama.hungrypenguin.R;
+import com.ama.hungrypenguin.adapter.CheckoutActivityAdapter;
+import com.ama.hungrypenguin.data.SampleData;
+import com.ama.hungrypenguin.model.Dish;
+
+import java.util.List;
 
 /**
  * Created by Knock on 2/20/16.
@@ -33,12 +38,15 @@ public class CheckoutActivity extends AppCompatActivity {
             }
         });
 
-        RecyclerView rv = (RecyclerView)findViewById(R.id.rv);
-        rv.setHasFixedSize(true);
+        RecyclerView rv = (RecyclerView) findViewById(R.id.rv);
 
-        
+
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
         rv.setLayoutManager(llm);
+
+        List<Dish> dishes = SampleData.getDishes();
+        CheckoutActivityAdapter cAv = new CheckoutActivityAdapter(dishes);
+        rv.setAdapter(cAv);
     }
 
 }

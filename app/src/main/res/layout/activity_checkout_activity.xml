@@ -27,7 +27,7 @@
             android:textAlignment="viewEnd"
             android:gravity="end"
             android:layout_marginRight="@dimen/activity_vertical_margin"
-            android:layout_marginTop="@dimen/activity_vertical_margin"/>
+            android:layout_marginTop="10dp"/>
 
         </android.support.v7.widget.Toolbar>
 
