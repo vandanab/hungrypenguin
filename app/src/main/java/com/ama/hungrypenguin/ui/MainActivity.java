@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.ama.hungrypenguin.DishListFragment;
+
 import com.ama.hungrypenguin.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -75,11 +77,11 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0: // Fragment # 0 - This will show FirstFragment
-                    return MenusFragment.newInstance(0, titles[0]);
+                    return DishListFragment.newInstance(0);
                 case 1:
-                    return TrendingFragment.newInstance(1, titles[1]);
+                    return DishListFragment.newInstance(1);
                 case 2:
-                    return TrendingFragment.newInstance(2, titles[2]);
+                    return DishListFragment.newInstance(2);
                 default:
                     return null;
             }

@@ -1,31 +1,35 @@
 package com.ama.hungrypenguin;
 
-import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ama.hungrypenguin.data.SampleData;
+import com.ama.hungrypenguin.model.Dish;
 
-public class MenusFragment extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class DishListFragment extends Fragment {
     private static final String ARG_PARAM1 = "page";
-    private static final String ARG_PARAM2 = "title";
+    private List<Dish> dishes;
+    private RecyclerView dishesRV;
 
     private int mpage;
-    private String mtitle;
 
-    public static MenusFragment newInstance(int page, String title) {
-        MenusFragment fragment = new MenusFragment();
+    public static DishListFragment newInstance(int page) {
+        DishListFragment fragment = new DishListFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1, page);
-        args.putString(ARG_PARAM2, title);
         fragment.setArguments(args);
         return fragment;
     }
 
-    public MenusFragment() {
+    public DishListFragment() {
         // Required empty public constructor
     }
 
@@ -34,7 +38,7 @@ public class MenusFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mpage = getArguments().getInt(ARG_PARAM1);
-            mtitle = getArguments().getString(ARG_PARAM2);
+            dishes = SampleData.getDishesData().get(mpage);
         }
     }
 
@@ -42,6 +46,6 @@ public class MenusFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menus, container, false);
+        return inflater.inflate(R.layout.fragment_dish_list, container, false);
     }
 }
