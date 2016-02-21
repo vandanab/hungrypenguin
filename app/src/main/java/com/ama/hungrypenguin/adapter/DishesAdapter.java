@@ -1,7 +1,6 @@
 package com.ama.hungrypenguin.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,13 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ama.hungrypenguin.R;
 import com.ama.hungrypenguin.model.Dish;
-import com.ama.hungrypenguin.ui.FoodDetailActivity;
-import com.ama.hungrypenguin.ui.MainActivity;
 import com.ama.hungrypenguin.util.DetailEventHandler;
 import com.ama.hungrypenguin.util.PrefsEventHandler;
 import com.ama.hungrypenguin.util.SharedPrefsHelper;
@@ -35,9 +31,9 @@ public class DishesAdapter extends
 
     public DishesAdapter(List<Dish> data, SharedPrefsHelper helper,
             PrefsEventHandler handler, DetailEventHandler detailHandler) {
+        this.detailHandler = detailHandler;
         dishes = data;
         sharedPrefsHelper = helper;
-        this.detailHandler = detailHandler;
         this.handler = handler;
     }
 
@@ -53,8 +49,8 @@ public class DishesAdapter extends
     @Override
     public void onBindViewHolder(DishesAdapter.ViewHolder holder, int position) {
         Dish dish = dishes.get(position);
-        holder.title.setText(dish.name);
         holder.title.setTag(dish.id);
+        holder.title.setText(dish.name);
         holder.cost.setText(Double.toString(dish.cost));
         holder.cost.setTag(dish.id);
         Uri uri = Uri.parse(dish.imageUrl);

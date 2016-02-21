@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        this.setTitle(getIntent().getStringExtra("name"));
         // Set up view pager
         ViewPager viewpager = (ViewPager) findViewById(R.id.viewpager);
         adapterViewPager = new MyPagerAdapter(getSupportFragmentManager());
