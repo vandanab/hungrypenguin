@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:adjustViewBounds="true"
-        android:src="@drawable/fastfood" />
+         />
 
     <LinearLayout
         android:id="@+id/linear1"
