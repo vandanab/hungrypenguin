@@ -15,9 +15,11 @@ import com.ama.hungrypenguin.data.SampleData;
 import com.ama.hungrypenguin.model.Checkout;
 import com.ama.hungrypenguin.model.Dish;
 import com.ama.hungrypenguin.model.Order;
+import com.ama.hungrypenguin.util.SharedPrefsHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Knock on 2/20/16.
@@ -55,6 +57,18 @@ public class CheckoutActivity extends AppCompatActivity {
         myOrders.add(ch);
         myOrders.add(ch);
         myOrders.add(ch);
+
+        SharedPrefsHelper mSharedPrefsHelper = new SharedPrefsHelper(this);
+        Map<Integer, Integer> orders = mSharedPrefsHelper.getOrder();
+        List<Dish> itemsList = SampleData.getDishes();
+
+        for(Integer orderId: orders.keySet()) {
+            Dish currDish = SampleData.getDish(orderId);
+            int qty = orders.get(orderId);
+
+            Checkout currCh = new Checkout(currDish.imageUrl, currDish.name, currDish.cost, qty);
+            myOrders.add(currCh);
+        }
 
         Order myOrder = new Order(myOrders);
         CheckoutActivityAdapter cAv = new CheckoutActivityAdapter(myOrder.getOrderList());
