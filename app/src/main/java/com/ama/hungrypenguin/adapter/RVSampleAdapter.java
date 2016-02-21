@@ -54,7 +54,7 @@ public class RVSampleAdapter extends RecyclerView.Adapter<RVSampleAdapter.Sample
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(context, restaurants.get(getPosition()).name, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(context, restaurants.get(getPosition()).name, Toast.LENGTH_SHORT).show();
             Intent i = new Intent(context, MainActivity.class);
             i.putExtra("name", restaurants.get(getPosition()).name);
             context.startActivity(i);

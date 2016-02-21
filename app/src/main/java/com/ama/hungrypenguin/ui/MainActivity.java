@@ -1,6 +1,7 @@
 package com.ama.hungrypenguin.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     FragmentPagerAdapter adapterViewPager;
     String title;
+    SharedPreferences main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +28,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        main = this.getSharedPreferences("main", 1);
 
         if (savedInstanceState != null) {
             title = savedInstanceState.getString("title");
-        } else {
+        } else if (getIntent() != null && getIntent().hasExtra("name")) {
             title = getIntent().getStringExtra("name");
+            main.edit().putString("title", title).commit();
+        } else {
+            title = main.getString("title", "");
         }
         this.setTitle(title);
         // Set up view pager
@@ -87,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static class MyPagerAdapter extends FragmentPagerAdapter {
         private static int NUM_ITEMS = 3;
-        private String[] titles = new String[] {"Menu", "Trending", "Interesting"};
+        private String[] titles = new String[] {"Trending", "Menu", "Interesting"};
 
         public MyPagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
