@@ -1,4 +1,4 @@
-package com.ama.hungrypenguin;
+package com.ama.hungrypenguin.ui;
 
 /**
  * Created by archanaiyer on 2/21/16.
@@ -7,7 +7,8 @@ package com.ama.hungrypenguin;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import com.ama.hungrypenguin.ui.MainActivity;
+
+import com.ama.hungrypenguin.R;
 
 public class SplashScreen extends Activity {
 
@@ -20,11 +21,11 @@ public class SplashScreen extends Activity {
         Thread timerThread = new Thread() {
             public void run() {
                 try {
-                    sleep(3000);
+                    sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
-                    Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                    Intent intent = new Intent(SplashScreen.this, SampleActivity.class);
                     startActivity(intent);
                 }
             }

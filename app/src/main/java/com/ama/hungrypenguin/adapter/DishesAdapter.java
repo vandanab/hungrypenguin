@@ -9,12 +9,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ama.hungrypenguin.R;
 import com.ama.hungrypenguin.model.Dish;
 import com.ama.hungrypenguin.ui.FoodDetailActivity;
 import com.ama.hungrypenguin.ui.MainActivity;
+import com.ama.hungrypenguin.util.DetailEventHandler;
 import com.ama.hungrypenguin.util.PrefsEventHandler;
 import com.ama.hungrypenguin.util.SharedPrefsHelper;
 import com.bumptech.glide.Glide;
@@ -29,13 +31,13 @@ public class DishesAdapter extends
     private List<Dish> dishes;
     private SharedPrefsHelper sharedPrefsHelper;
     private PrefsEventHandler handler;
-    private Context context;
+    private DetailEventHandler detailHandler;
 
-    public DishesAdapter(Context parent, List<Dish> data, SharedPrefsHelper helper,
-            PrefsEventHandler handler) {
+    public DishesAdapter(List<Dish> data, SharedPrefsHelper helper,
+            PrefsEventHandler handler, DetailEventHandler detailHandler) {
         dishes = data;
         sharedPrefsHelper = helper;
-        this.context = parent;
+        this.detailHandler = detailHandler;
         this.handler = handler;
     }
 
@@ -44,15 +46,15 @@ public class DishesAdapter extends
         LayoutInflater inflater = (LayoutInflater) parent.getContext().getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(R.layout.dish_order_card, parent, false);
-        DishesAdapter.ViewHolder vh = new DishesAdapter.ViewHolder(v, context);
+        DishesAdapter.ViewHolder vh = new DishesAdapter.ViewHolder(v);
         return vh;
     }
 
     @Override
     public void onBindViewHolder(DishesAdapter.ViewHolder holder, int position) {
         Dish dish = dishes.get(position);
-        holder.item = dish;
         holder.title.setText(dish.name);
+        holder.title.setTag(dish.id);
         holder.cost.setText(Double.toString(dish.cost));
         holder.cost.setTag(dish.id);
         Uri uri = Uri.parse(dish.imageUrl);
@@ -67,6 +69,13 @@ public class DishesAdapter extends
                 handler.showState();
             }
         });
+
+        holder.title.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                detailHandler.gotoDetail((Integer) v.getTag());
+            }
+        });
     }
 
     @Override
@@ -74,28 +83,16 @@ public class DishesAdapter extends
         return dishes.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        Dish item;
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView thumbnail;
         TextView title;
         Button cost;
-        Context context;
 
-        public ViewHolder(View itemView, Context ctx) {
+        public ViewHolder(View itemView) {
             super(itemView);
-            context = ctx;
-            itemView.setClickable(true);
-            itemView.setOnClickListener(this);
             thumbnail = (ImageView) itemView.findViewById(R.id.thumbnail);
             title = (TextView) itemView.findViewById(R.id.title);
             cost = (Button) itemView.findViewById(R.id.costButton);
-        }
-
-        @Override
-        public void onClick(View v) {
-            Intent i = new Intent(context, FoodDetailActivity.class);
-            i.putExtra("id", item.id);
-            context.startActivity(i);
         }
     }
 }

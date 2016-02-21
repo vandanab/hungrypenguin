@@ -4,16 +4,31 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 import com.ama.hungrypenguin.R;
+import com.ama.hungrypenguin.data.SampleData;
+import com.ama.hungrypenguin.model.Dish;
 import com.ama.hungrypenguin.util.CircleCheckBox;
 
 public class FoodDetailActivity extends AppCompatActivity {
+
+    private Dish dish;
+    private TextView titleView;
+    private TextView costView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_detail);
+
+        int id = getIntent().getIntExtra("id", 0);
+        dish = SampleData.getDish(id);
+
+        titleView = (TextView) findViewById(R.id.title);
+        costView = (TextView) findViewById(R.id.cost);
+        titleView.setText(dish.name);
+        costView.setText("$" + dish.cost);
         CircleCheckBox checkBox = new CircleCheckBox(getApplicationContext());
         checkBox.setOnCheckedChangeListener(new CircleCheckBox.OnCheckedChangeListener() {
             @Override
@@ -21,17 +36,6 @@ public class FoodDetailActivity extends AppCompatActivity {
                 System.out.println("CHECK " + isChecked);
             }
         });
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
     }
 
 }
