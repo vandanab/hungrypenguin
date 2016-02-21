@@ -1,5 +1,6 @@
 package com.ama.hungrypenguin.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -54,7 +55,18 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
+        if (id == R.id.action_checkout) {
+            Intent i = new Intent(MainActivity.this, CheckoutActivity.class);
+            startActivity(i);
+        }
+
         return super.onOptionsItemSelected(item);
+    }
+
+    public void gotoDetail(int id) {
+        Intent i = new Intent(MainActivity.this, FoodDetailActivity.class);
+        i.putExtra("id", id);
+        startActivity(i);
     }
 
     public static class MyPagerAdapter extends FragmentPagerAdapter {

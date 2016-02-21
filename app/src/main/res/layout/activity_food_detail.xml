@@ -5,39 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".ui.CheckoutActivity"
-    android:title="@string/title_activity_checkout_activity">
+    tools:context="com.ama.hungrypenguin.ui.FoodDetailActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        app:title="@string/title_activity_checkout_activity">
-
+        android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="@string/title_activity_checkout_activity">
-        <TextView
-            android:id="@+id/totalPrice"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="$36.50"
-            android:textSize="25dp"
-            android:textAlignment="viewEnd"
-            android:gravity="end"
-            android:layout_marginRight="@dimen/activity_vertical_margin"
-            android:layout_marginTop="10dp"/>
-
-        </android.support.v7.widget.Toolbar>
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_checkout_activity" />
+    <include layout="@layout/content_food_detail" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

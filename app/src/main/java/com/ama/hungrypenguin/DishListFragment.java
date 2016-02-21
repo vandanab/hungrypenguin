@@ -7,19 +7,23 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.ama.hungrypenguin.adapter.DishesAdapter;
 import com.ama.hungrypenguin.data.SampleData;
 import com.ama.hungrypenguin.model.Dish;
+import com.ama.hungrypenguin.util.PrefsEventHandler;
+import com.ama.hungrypenguin.util.SharedPrefsHelper;
 
 import java.util.List;
 
 
-public class DishListFragment extends Fragment {
+public class DishListFragment extends Fragment implements PrefsEventHandler {
     private static final String ARG_PARAM1 = "page";
     private List<Dish> dishes;
     private RecyclerView dishesRV;
     private DishesAdapter dishesAdapter;
+    private SharedPrefsHelper prefsHelper;
 
     private int mpage;
 
@@ -39,9 +43,10 @@ public class DishListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
+            prefsHelper = new SharedPrefsHelper(getContext());
             mpage = getArguments().getInt(ARG_PARAM1);
             dishes = SampleData.getDishesData().get(mpage);
-            dishesAdapter = new DishesAdapter(dishes);
+            dishesAdapter = new DishesAdapter(getActivity(), dishes, prefsHelper, this);
         }
     }
 
@@ -55,5 +60,10 @@ public class DishListFragment extends Fragment {
         dishesRV.setLayoutManager(llm);
         dishesRV.setAdapter(dishesAdapter);
         return view;
+    }
+
+    @Override
+    public void showState() {
+        Toast.makeText(getContext(), prefsHelper.getState(), Toast.LENGTH_SHORT).show();
     }
 }
