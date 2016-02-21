@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_below="@id/title"
             android:layout_height="1dp"
-            android:background="@android:color/lighter_gray"/>
+            android:background="@android:color/darker_gray"/>
 
         <TextView
             android:id="@+id/qtyText"

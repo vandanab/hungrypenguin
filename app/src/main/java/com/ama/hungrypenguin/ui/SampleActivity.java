@@ -1,5 +1,6 @@
 package com.ama.hungrypenguin.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,19 +9,25 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.OvershootInterpolator;
+import android.widget.Toast;
 
 import com.ama.hungrypenguin.R;
 import com.ama.hungrypenguin.adapter.RVSampleAdapter;
+import com.ama.hungrypenguin.data.RestaurantData;
 import com.ama.hungrypenguin.model.Restaurant;
+import com.ama.hungrypenguin.util.ItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class SampleActivity extends AppCompatActivity {
 
     private RecyclerView rv;
     //final LinearLayoutManager llm;
     RVSampleAdapter adapter;
+    List<Restaurant> restaurants;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,17 +50,25 @@ public class SampleActivity extends AppCompatActivity {
         rv.setHasFixedSize(true);
 
 
+        RestaurantData rd = new RestaurantData();
+        List<Restaurant> restaurants = rd.getRestaurants();
 
 
-        ArrayList<Restaurant> restaurants = new ArrayList<Restaurant>();
-        Restaurant r1 = new Restaurant("http://i.kinja-img.com/gawker-media/image/upload/s--Iuw1yxhh--/wojsrqpmxrfhjajjzaz6.gif", "Burger");
-        //Restaurant r2 = new Restaurant("http://i.kinja-img.com/gawker-media/image/upload/s--Iuw1yxhh--/wojsrqpmxrfhjajjzaz6.gif", "Akshay");
-
-        restaurants.add(r1);
-        //restaurants.add(r2);
-
-        adapter = new RVSampleAdapter(restaurants);
+        adapter = new RVSampleAdapter(restaurants, this);
+        //adapter.setItemClickListener(this);
         rv.setAdapter(adapter);
     }
 
+//    @Override
+//    public void onItemClick(int position, View view) {
+//        RestaurantData rd = new RestaurantData();
+//        restaurants = rd.getRestaurants();
+//        Restaurant r = restaurants.get(position);
+//        String name = r.name;
+//
+//        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+//        i.putExtra("name", name);
+//        startActivity(i);
+//        Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
+//    }
 }
