@@ -32,7 +32,7 @@ public class SampleData {
                 "http://45.media.tumblr.com/9c81bd5d13c04253b42e31b4be1f5d06/tumblr_nqz1tsWQxh1rq6lflo5_400.gif",
                 "Croissants",
                 2.00, new ArrayList<String>() {{add("Chocolate");add("Cheese");}},
-                50
+                150
         ));
         dishes.add(new Dish(
                 3,
