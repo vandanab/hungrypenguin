@@ -49,6 +49,10 @@
             android:name=".ui.PostOrderActivity"
             android:label="@string/title_activity_post_order"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ui.FoodDetailActivity"
+            android:label="@string/title_activity_food_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
