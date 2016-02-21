@@ -4,6 +4,6 @@
     <string name="title_activity_sample">Restaurants</string>
     <string name="title_activity_checkout_activity">Checkout</string>
     <string name="title_activity_post_order">Post Order</string>
-    <string name="title_activity_food_detail">Detail</string>
+    <string name="title_activity_food_detail">Sides</string>
     <string name="action_checkout">Checkout</string>
 </resources>

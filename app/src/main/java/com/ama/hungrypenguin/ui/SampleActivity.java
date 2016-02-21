@@ -17,6 +17,7 @@ import com.ama.hungrypenguin.R;
 import com.ama.hungrypenguin.adapter.RVSampleAdapter;
 import com.ama.hungrypenguin.data.RestaurantData;
 import com.ama.hungrypenguin.model.Restaurant;
+import com.ama.hungrypenguin.util.SharedPrefsHelper;
 
 import java.nio.charset.Charset;
 import java.util.List;
@@ -42,6 +43,10 @@ public class SampleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sample);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // clear the orderlist
+        SharedPrefsHelper mSharedPrefs = new SharedPrefsHelper(this);
+        mSharedPrefs.clear();
 
         resolveIntent(getIntent());
         mAdapter = NfcAdapter.getDefaultAdapter(this);

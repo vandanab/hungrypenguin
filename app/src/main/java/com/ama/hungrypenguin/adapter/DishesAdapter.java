@@ -77,7 +77,7 @@ public class DishesAdapter extends
                     Dish d = SampleData.getDish((Integer) v.getTag());
                     b.setText("$" + d.cost + "(" + String.valueOf(qty) + ")");
                 }
-                handler.showState();
+//                handler.showState();
             }
         });
 
