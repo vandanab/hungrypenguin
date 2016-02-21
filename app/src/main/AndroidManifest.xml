@@ -22,27 +22,37 @@
         </activity>
         <activity
             android:name=".ui.SampleActivity"
-
             android:label="@string/title_activity_sample"
             android:theme="@style/AppTheme.NoActionBar">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
 
         </activity>
-
         <activity
-                android:name=".ui.CheckoutActivity"
-                android:label="@string/title_activity_checkout_activity"
-                android:theme="@style/AppTheme.NoActionBar">
-                <!--<intent-filter>-->
-                    <!--<action android:name="android.intent.action.MAIN" />-->
+            android:name=".ui.CheckoutActivity"
+            android:label="@string/title_activity_checkout_activity"
+            android:theme="@style/AppTheme.NoActionBar">
 
-                    <!--<category android:name="android.intent.category.LAUNCHER" />-->
-                <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
+        <activity
+            android:name=".ui.PostOrderActivity"
+            android:label="@string/title_activity_post_order"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ui.FoodDetailActivity"
+            android:label="@string/title_activity_food_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

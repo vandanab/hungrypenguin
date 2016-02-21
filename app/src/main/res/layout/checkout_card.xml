@@ -40,6 +40,7 @@
             android:layout_alignParentRight="true"
             android:maxLines="3"
             android:padding="8dp"
+            android:layout_marginTop="6dp"
             android:text=""
             android:textColor="#666"
             android:textSize="14dp" />
@@ -66,10 +67,11 @@
             android:id="@+id/qtyValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@id/cost"
+            android:layout_alignTop="@id/qtyText"
             android:layout_alignParentRight="true"
             android:maxLines="3"
             android:padding="8dp"
+            android:layout_marginTop="6dp"
             android:text=""
             android:textColor="#666"
             android:textSize="14dp" />
