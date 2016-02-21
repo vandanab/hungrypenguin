@@ -16,8 +16,6 @@ import android.widget.Toast;
 import com.ama.hungrypenguin.R;
 import com.ama.hungrypenguin.model.Restaurant;
 import com.ama.hungrypenguin.ui.MainActivity;
-import com.ama.hungrypenguin.ui.SampleActivity;
-import com.ama.hungrypenguin.util.ItemClickListener;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
@@ -31,7 +29,6 @@ import java.util.List;
 public class RVSampleAdapter extends RecyclerView.Adapter<RVSampleAdapter.SampleHolder>{
 
     List<Restaurant> restaurants;
-    private ItemClickListener itemClickListener;
     Context context;
 
     public class SampleHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
