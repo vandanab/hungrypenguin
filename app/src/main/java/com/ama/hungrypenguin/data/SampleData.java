@@ -14,9 +14,9 @@ public class SampleData {
     static {
         dishes.add(new Dish(
                 0,
-                "http://49.media.tumblr.com/f93587d0411932810f73763ac70fe173/tumblr_nqoenqtreF1sfet3to1_500.gif",
-                "Ramen",
-                5.00, new ArrayList<String>() {{add("Egg");add("Chicken");add("Chilli peppers");}}
+                "http://i.giphy.com/ZH38oi5qr211u.gif",
+                "Pancakes",
+                7.00, new ArrayList<String>() {{add("Whipped cream");add("Ice cream");add("Rasberry Coulis");}}
         ));
         dishes.add(new Dish(
                 1,
