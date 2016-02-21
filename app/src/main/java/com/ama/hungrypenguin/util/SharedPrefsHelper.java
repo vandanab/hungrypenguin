@@ -49,10 +49,18 @@ public class SharedPrefsHelper {
         return orderMap;
     }
 
+    public int getValue(int dishIndex) {
+        if(order.contains(String.valueOf(dishIndex))) {
+            return order.getInt(String.valueOf(dishIndex), 0);
+        }
+        return 0;
+    }
+
     public void clear() {
         SharedPreferences.Editor editor = order.edit();
         editor.clear();
         editor.commit();
     }
+
 
 }

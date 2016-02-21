@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ama.hungrypenguin.R;
+import com.ama.hungrypenguin.data.SampleData;
 import com.ama.hungrypenguin.model.Dish;
 import com.ama.hungrypenguin.ui.FoodDetailActivity;
 import com.ama.hungrypenguin.ui.MainActivity;
@@ -55,7 +56,13 @@ public class DishesAdapter extends
         Dish dish = dishes.get(position);
         holder.title.setText(dish.name);
         holder.title.setTag(dish.id);
-        holder.cost.setText(Double.toString(dish.cost));
+        int qty = sharedPrefsHelper.getValue(dish.id);
+        if(qty > 0) {
+            holder.cost.setText("$" + Double.toString(dish.cost) + "(" + String.valueOf(qty) + ")");
+        } else {
+            holder.cost.setText("$" + Double.toString(dish.cost));
+        }
+
         holder.cost.setTag(dish.id);
         Uri uri = Uri.parse(dish.imageUrl);
 
@@ -66,6 +73,12 @@ public class DishesAdapter extends
             @Override
             public void onClick(View v) {
                 sharedPrefsHelper.updateOrder((Integer) v.getTag(), 1);
+                int qty = sharedPrefsHelper.getValue((Integer) v.getTag());
+                if(qty > 0) {
+                    Button b = (Button) v;
+                    Dish d = SampleData.getDish((Integer) v.getTag());
+                    b.setText("$" + d.cost + "(" + String.valueOf(qty) + ")");
+                }
                 handler.showState();
             }
         });
