@@ -63,7 +63,7 @@ public class CheckoutActivityAdapter extends RecyclerView.Adapter<CheckoutActivi
         Checkout currDish  = dishes.get(position);
 
         holder.name.setText(currDish.name);
-        holder.cost.setText(String.valueOf(currDish.cost));
+        holder.cost.setText("$" +  String.valueOf(currDish.cost));
 
         Uri uri = Uri.parse(currDish.imageUrl);
 
