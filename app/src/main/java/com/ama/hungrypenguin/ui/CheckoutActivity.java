@@ -68,8 +68,8 @@ public class CheckoutActivity extends AppCompatActivity {
             Checkout currCh = new Checkout(currDish.imageUrl, currDish.name, currDish.cost, qty);
             myOrders.add(currCh);
         }
-        mSharedPrefsHelper.clear();
-        
+//        mSharedPrefsHelper.clear();
+
         Order myOrder = new Order(myOrders);
         CheckoutActivityAdapter cAv = new CheckoutActivityAdapter(myOrder.getOrderList());
         rv.setAdapter(cAv);

@@ -53,7 +53,13 @@
         <activity
             android:name=".ui.PostOrderActivity"
             android:label="@string/title_activity_post_order"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:parentActivityName="com.ama.hungrypenguin.ui.CheckoutActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ama.hungrypenguin.ui.CheckoutActivity" />
+
+        </activity>
         <activity
             android:name=".ui.FoodDetailActivity"
             android:label="@string/title_activity_food_detail"
