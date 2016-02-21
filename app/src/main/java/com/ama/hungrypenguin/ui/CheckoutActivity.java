@@ -12,8 +12,11 @@ import android.view.View;
 import com.ama.hungrypenguin.R;
 import com.ama.hungrypenguin.adapter.CheckoutActivityAdapter;
 import com.ama.hungrypenguin.data.SampleData;
+import com.ama.hungrypenguin.model.Checkout;
 import com.ama.hungrypenguin.model.Dish;
+import com.ama.hungrypenguin.model.Order;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,8 +47,17 @@ public class CheckoutActivity extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
         rv.setLayoutManager(llm);
 
-        List<Dish> dishes = SampleData.getDishes();
-        CheckoutActivityAdapter cAv = new CheckoutActivityAdapter(dishes);
+        // TODO: Take dynamically from Shared Prefs
+        Checkout ch = new Checkout("http://49.media.tumblr.com/f93587d0411932810f73763ac70fe173/tumblr_nqoenqtreF1sfet3to1_500.gif",
+                "Maggi", 3.90, 1);
+        List<Checkout> myOrders = new ArrayList<Checkout>();
+        myOrders.add(ch);
+        myOrders.add(ch);
+        myOrders.add(ch);
+        myOrders.add(ch);
+
+        Order myOrder = new Order(myOrders);
+        CheckoutActivityAdapter cAv = new CheckoutActivityAdapter(myOrder.getOrderList());
         rv.setAdapter(cAv);
     }
 

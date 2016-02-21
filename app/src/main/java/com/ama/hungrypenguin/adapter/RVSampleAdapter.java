@@ -3,6 +3,7 @@ package com.ama.hungrypenguin.adapter;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 
 import com.ama.hungrypenguin.R;
 import com.ama.hungrypenguin.model.Restaurant;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.w3c.dom.Text;
 
@@ -40,7 +43,7 @@ public class RVSampleAdapter extends RecyclerView.Adapter<RVSampleAdapter.Sample
 
     }
 
-    RVSampleAdapter(List<Restaurant> restaurants){
+    public RVSampleAdapter(List<Restaurant> restaurants){
         this.restaurants = restaurants;
     }
 
@@ -54,13 +57,23 @@ public class RVSampleAdapter extends RecyclerView.Adapter<RVSampleAdapter.Sample
 
     @Override
     public void onBindViewHolder(SampleHolder holder, int position) {
-
+        holder.title.setText(restaurants.get(position).name);
+        Log.d("AKSHAY", restaurants.get(position).imageUrl);
+        Glide.with(holder.itemView.getContext())
+                .load(restaurants.get(position).imageUrl)
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                //.placeholder(R.drawable.def_bg)
+                .into(holder.thumbnail);
+//        Glide.with(holder.itemView.getContext()).load("http://goo.gl/gEgYUd").into(holder.thumbnail);
     }
 
     @Override
     public int getItemCount() {
-        return 1;
+        return restaurants.size();
     }
 
-
+    @Override
+    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+    }
 }

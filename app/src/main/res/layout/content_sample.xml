@@ -12,5 +12,12 @@
     tools:context=".ui.SampleActivity"
     tools:showIn="@layout/activity_sample">
 
-    <include layout="@layout/card_reference" />
+    <!--<include layout="@layout/card_reference" />-->
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/reView"
+        xmlns:android="http://schemas.android.com/apk/res/android" />
+
 </LinearLayout>

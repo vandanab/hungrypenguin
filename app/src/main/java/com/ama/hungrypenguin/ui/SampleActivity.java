@@ -10,9 +10,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.ama.hungrypenguin.R;
+import com.ama.hungrypenguin.adapter.RVSampleAdapter;
+import com.ama.hungrypenguin.model.Restaurant;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SampleActivity extends AppCompatActivity {
 
+    private RecyclerView rv;
+    //final LinearLayoutManager llm;
+    RVSampleAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,14 +37,23 @@ public class SampleActivity extends AppCompatActivity {
 //            }
 //        });
 
-        RecyclerView rv = (RecyclerView)findViewById(R.id.rv);
+        rv = (RecyclerView) findViewById(R.id.reView);
+        LinearLayoutManager llm = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        rv.setLayoutManager(llm);
         rv.setHasFixedSize(true);
 
 
-        LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
-        rv.setLayoutManager(llm);
 
 
+        ArrayList<Restaurant> restaurants = new ArrayList<Restaurant>();
+        Restaurant r1 = new Restaurant("http://i.kinja-img.com/gawker-media/image/upload/s--Iuw1yxhh--/wojsrqpmxrfhjajjzaz6.gif", "Burger");
+        //Restaurant r2 = new Restaurant("http://i.kinja-img.com/gawker-media/image/upload/s--Iuw1yxhh--/wojsrqpmxrfhjajjzaz6.gif", "Akshay");
+
+        restaurants.add(r1);
+        //restaurants.add(r2);
+
+        adapter = new RVSampleAdapter(restaurants);
+        rv.setAdapter(adapter);
     }
 
 }
