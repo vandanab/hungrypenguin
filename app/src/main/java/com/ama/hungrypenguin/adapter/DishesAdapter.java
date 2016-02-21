@@ -56,7 +56,7 @@ public class DishesAdapter extends
         holder.title.setText(dish.name);
         holder.cost.setText(Double.toString(dish.cost));
         holder.cost.setTag(dish.id);
-        holder.stats.setText(dish.trendingStats + " Pengu's bought this");
+        holder.stats.setText(dish.trendingStats + " Penguins bought this");
 
         int qty = sharedPrefsHelper.getValue(dish.id);
         if(qty > 0) {

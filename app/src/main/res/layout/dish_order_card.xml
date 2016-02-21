@@ -48,12 +48,11 @@
                 android:text="title"
                 android:textColor="@android:color/holo_green_dark"
                 android:textStyle="bold"
-                android:textSize="10dp" />
+                android:textSize="12dp" />
         </LinearLayout>
 
         <Button
             android:id="@+id/costButton"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
