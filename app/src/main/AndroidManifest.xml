@@ -36,7 +36,12 @@
         <activity
             android:name=".ui.CheckoutActivity"
             android:label="@string/title_activity_checkout_activity"
+            android:parentActivityName="com.ama.hungrypenguin.ui.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
+            <!-- The meta-data element is needed for versions lower than 4.1 -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ama.hungrypenguin.ui.MainActivity" />
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
