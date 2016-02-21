@@ -1,5 +1,6 @@
 package com.ama.hungrypenguin.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import com.ama.hungrypenguin.R;
 import com.ama.hungrypenguin.adapter.CheckoutActivityAdapter;
@@ -35,12 +37,15 @@ public class CheckoutActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        final Intent i = new Intent(CheckoutActivity.this, PostOrderActivity.class);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                startActivity(i);
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
             }
         });
 
@@ -50,18 +55,11 @@ public class CheckoutActivity extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
         rv.setLayoutManager(llm);
 
-        // TODO: Take dynamically from Shared Prefs
-        Checkout ch = new Checkout("http://49.media.tumblr.com/f93587d0411932810f73763ac70fe173/tumblr_nqoenqtreF1sfet3to1_500.gif",
-                "Maggi", 3.90, 1);
         List<Checkout> myOrders = new ArrayList<Checkout>();
-        myOrders.add(ch);
-        myOrders.add(ch);
-        myOrders.add(ch);
-        myOrders.add(ch);
+
 
         SharedPrefsHelper mSharedPrefsHelper = new SharedPrefsHelper(this);
         Map<Integer, Integer> orders = mSharedPrefsHelper.getOrder();
-        List<Dish> itemsList = SampleData.getDishes();
 
         for(Integer orderId: orders.keySet()) {
             Dish currDish = SampleData.getDish(orderId);
@@ -70,10 +68,13 @@ public class CheckoutActivity extends AppCompatActivity {
             Checkout currCh = new Checkout(currDish.imageUrl, currDish.name, currDish.cost, qty);
             myOrders.add(currCh);
         }
-
+        mSharedPrefsHelper.clear();
+        
         Order myOrder = new Order(myOrders);
         CheckoutActivityAdapter cAv = new CheckoutActivityAdapter(myOrder.getOrderList());
         rv.setAdapter(cAv);
+        final TextView totalPrice = (TextView) findViewById(R.id.totalPrice);
+        totalPrice.setText(String.valueOf("$" + myOrder.getTotalPrice()));
     }
 
 }
