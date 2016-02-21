@@ -60,7 +60,7 @@ public class RVSampleAdapter extends RecyclerView.Adapter<RVSampleAdapter.Sample
         holder.title.setText(restaurants.get(position).name);
         Log.d("AKSHAY", restaurants.get(position).imageUrl);
         Glide.with(holder.itemView.getContext())
-                .load("http://goo.gl/gEgYUd")
+                .load(restaurants.get(position).imageUrl)
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 //.placeholder(R.drawable.def_bg)
                 .into(holder.thumbnail);

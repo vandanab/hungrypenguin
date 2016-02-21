@@ -47,10 +47,10 @@ public class SampleActivity extends AppCompatActivity {
 
         ArrayList<Restaurant> restaurants = new ArrayList<Restaurant>();
         Restaurant r1 = new Restaurant("http://i.kinja-img.com/gawker-media/image/upload/s--Iuw1yxhh--/wojsrqpmxrfhjajjzaz6.gif", "Burger");
-        Restaurant r2 = new Restaurant("http://i.kinja-img.com/gawker-media/image/upload/s--Iuw1yxhh--/wojsrqpmxrfhjajjzaz6.gif", "Akshay");
+        //Restaurant r2 = new Restaurant("http://i.kinja-img.com/gawker-media/image/upload/s--Iuw1yxhh--/wojsrqpmxrfhjajjzaz6.gif", "Akshay");
 
         restaurants.add(r1);
-        restaurants.add(r2);
+        //restaurants.add(r2);
 
         adapter = new RVSampleAdapter(restaurants);
         rv.setAdapter(adapter);
