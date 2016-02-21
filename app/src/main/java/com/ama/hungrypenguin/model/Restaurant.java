@@ -5,8 +5,8 @@ package com.ama.hungrypenguin.model;
  */
 public class Restaurant {
 
-    String imageUrl;
-    String name;
+    public String imageUrl;
+    public String name;
 
 
     public Restaurant(String imageUrl, String name){

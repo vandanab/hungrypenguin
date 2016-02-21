@@ -14,15 +14,16 @@
             android:id="@+id/thumbnail"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:layout_alignParentTop="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/fastfood" />
+            android:layout_centerInParent="true"
+            android:adjustViewBounds="true"
+            />
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/thumbnail"
+            android:layout_below="@id/thumbnail"
             android:layout_alignParentLeft="true"
             android:maxLines="3"
             android:padding="8dp"
@@ -35,7 +36,7 @@
             android:id="@+id/cost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/title"
+            android:layout_alignTop="@id/title"
             android:layout_alignParentRight="true"
             android:maxLines="3"
             android:padding="8dp"
