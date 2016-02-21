@@ -39,11 +39,11 @@ public class SampleData {
     }
 
     public static List<Dish> getTrendingDishes() {
-        return dishes.subList(2, 3);
+        return dishes.subList(2, 4);
     }
 
     public static List<Dish> getInterestingDishes() {
-        return dishes.subList(1, 1);
+        return dishes.subList(0, 1);
     }
 
     public static Dish getDish(int index) {

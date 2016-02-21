@@ -14,11 +14,11 @@
             android:id="@+id/thumbnail"
             android:layout_width="match_parent"
             android:layout_height="150dp"
+
             android:scaleType="centerCrop"
             android:layout_centerInParent="true"
             android:adjustViewBounds="true"
             />
-
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
