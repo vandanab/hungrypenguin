@@ -56,8 +56,8 @@ public class SampleData {
 
     public static List<List<Dish>> getDishesData() {
         List<List<Dish>> dishesLists = new ArrayList<>();
-        dishesLists.add(getDishes());
         dishesLists.add(getTrendingDishes());
+        dishesLists.add(getDishes());
         dishesLists.add(getInterestingDishes());
         return dishesLists;
     }
