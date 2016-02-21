@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.ama.hungrypenguin.TrendingFragment;
+import com.ama.hungrypenguin.MenusFragment;
 
 import com.ama.hungrypenguin.R;
 
