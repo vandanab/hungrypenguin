@@ -16,35 +16,10 @@
         android:adjustViewBounds="true"
          />
 
-
-    <LinearLayout
-        android:id="@+id/linear1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView">
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dish"
-            android:textColor="@color/cardview_dark_background"
-            android:textSize="30dp" />
-
-        <TextView
-            android:id="@+id/cost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="$10.33"
-            android:textColor="@color/cardview_dark_background"
-            android:textSize="30dp" />
-    </LinearLayout>
-
     <LinearLayout
         android:id="@+id/linear2"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/linear1"
         android:orientation="vertical">
 
         <com.ama.hungrypenguin.util.CircleCheckBox

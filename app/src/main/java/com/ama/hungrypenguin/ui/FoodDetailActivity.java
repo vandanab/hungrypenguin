@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
 import com.ama.hungrypenguin.R;
@@ -21,14 +22,17 @@ public class FoodDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_detail);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         int id = getIntent().getIntExtra("id", 0);
         dish = SampleData.getDish(id);
 
-        titleView = (TextView) findViewById(R.id.title);
-        costView = (TextView) findViewById(R.id.cost);
-        titleView.setText(dish.name);
-        costView.setText("$" + dish.cost);
+//        titleView = (TextView) findViewById(R.id.title);
+//        costView = (TextView) findViewById(R.id.cost);
+//        titleView.setText(dish.name);
+//        costView.setText("$" + dish.cost);
         CircleCheckBox checkBox = new CircleCheckBox(getApplicationContext());
         checkBox.setOnCheckedChangeListener(new CircleCheckBox.OnCheckedChangeListener() {
             @Override
