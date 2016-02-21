@@ -46,7 +46,7 @@ public class DishListFragment extends Fragment implements PrefsEventHandler {
             prefsHelper = new SharedPrefsHelper(getContext());
             mpage = getArguments().getInt(ARG_PARAM1);
             dishes = SampleData.getDishesData().get(mpage);
-            dishesAdapter = new DishesAdapter(dishes, prefsHelper, this);
+            dishesAdapter = new DishesAdapter(getActivity(), dishes, prefsHelper, this);
         }
     }
 

@@ -63,6 +63,12 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void gotoDetail(int id) {
+        Intent i = new Intent(MainActivity.this, FoodDetailActivity.class);
+        i.putExtra("id", id);
+        startActivity(i);
+    }
+
     public static class MyPagerAdapter extends FragmentPagerAdapter {
         private static int NUM_ITEMS = 3;
         private String[] titles = new String[] {"Menu", "Trending", "Interesting"};
