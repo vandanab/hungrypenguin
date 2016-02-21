@@ -12,5 +12,5 @@
     tools:context=".ui.CheckoutActivity"
     tools:showIn="@layout/activity_checkout_activity">
 
-    <include layout="@layout/content_sample" />
+    <include layout="@layout/card_reference" />
 </RelativeLayout>
