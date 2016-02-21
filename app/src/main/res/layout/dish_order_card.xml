@@ -40,7 +40,7 @@
             android:layout_alignTop="@id/title"
             android:layout_alignParentRight="true"
             android:maxLines="3"
-            android:padding="8dp"/>
+            android:padding="8dp" />
 
     </RelativeLayout>
 

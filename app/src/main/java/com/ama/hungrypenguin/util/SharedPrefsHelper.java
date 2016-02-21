@@ -30,6 +30,15 @@ public class SharedPrefsHelper {
         editor.commit();
     }
 
+    public String getState() {
+        String state = new String();
+        Map<String, ?> keysMap = order.getAll();
+        for (String key : keysMap.keySet()) {
+            state = state + key + ":" + order.getInt(key, 0) + " ";
+        }
+        return state;
+    }
+
     // Dish index -> quantity
     public Map<Integer, Integer> getOrder() {
         Map<Integer, Integer> orderMap = new HashMap<Integer, Integer>();
@@ -38,6 +47,12 @@ public class SharedPrefsHelper {
             orderMap.put(Integer.parseInt(key), order.getInt(key, 0));
         }
         return orderMap;
+    }
+
+    public void clear() {
+        SharedPreferences.Editor editor = order.edit();
+        editor.clear();
+        editor.commit();
     }
 
 }

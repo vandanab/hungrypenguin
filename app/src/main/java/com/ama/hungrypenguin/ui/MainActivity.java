@@ -1,5 +1,6 @@
 package com.ama.hungrypenguin.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -52,6 +53,11 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }
+
+        if (id == R.id.action_checkout) {
+            Intent i = new Intent(MainActivity.this, CheckoutActivity.class);
+            startActivity(i);
         }
 
         return super.onOptionsItemSelected(item);
