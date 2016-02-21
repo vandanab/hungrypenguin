@@ -80,7 +80,7 @@ public class RVSampleAdapter extends RecyclerView.Adapter<RVSampleAdapter.Sample
     @Override
     public void onBindViewHolder(SampleHolder holder, final int position) {
         holder.title.setText(restaurants.get(position).name);
-        Log.d("AKSHAY", restaurants.get(position).imageUrl);
+        //Log.d("AKSHAY", restaurants.get(position).imageUrl);
         holder.address.setText(restaurants.get(position).address);
         holder.dollar.setText(restaurants.get(position).dollar);
         Glide.with(holder.itemView.getContext())
