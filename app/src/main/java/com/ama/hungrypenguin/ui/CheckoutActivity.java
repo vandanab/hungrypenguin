@@ -35,7 +35,7 @@ public class CheckoutActivity extends AppCompatActivity {
         setContentView(R.layout.activity_checkout_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        final Intent i = new Intent(this, PostOrderActivity.class);
+        final Intent i = new Intent(CheckoutActivity.this, PostOrderActivity.class);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,18 +52,11 @@ public class CheckoutActivity extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
         rv.setLayoutManager(llm);
 
-        // TODO: Take dynamically from Shared Prefs
-        Checkout ch = new Checkout("http://49.media.tumblr.com/f93587d0411932810f73763ac70fe173/tumblr_nqoenqtreF1sfet3to1_500.gif",
-                "Maggi", 3.90, 1);
         List<Checkout> myOrders = new ArrayList<Checkout>();
-        myOrders.add(ch);
-        myOrders.add(ch);
-        myOrders.add(ch);
-        myOrders.add(ch);
+
 
         SharedPrefsHelper mSharedPrefsHelper = new SharedPrefsHelper(this);
         Map<Integer, Integer> orders = mSharedPrefsHelper.getOrder();
-        List<Dish> itemsList = SampleData.getDishes();
 
         for(Integer orderId: orders.keySet()) {
             Dish currDish = SampleData.getDish(orderId);
@@ -72,7 +65,8 @@ public class CheckoutActivity extends AppCompatActivity {
             Checkout currCh = new Checkout(currDish.imageUrl, currDish.name, currDish.cost, qty);
             myOrders.add(currCh);
         }
-
+        mSharedPrefsHelper.clear();
+        
         Order myOrder = new Order(myOrders);
         CheckoutActivityAdapter cAv = new CheckoutActivityAdapter(myOrder.getOrderList());
         rv.setAdapter(cAv);
