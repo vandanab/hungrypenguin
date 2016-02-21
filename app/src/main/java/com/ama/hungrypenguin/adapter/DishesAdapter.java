@@ -18,6 +18,8 @@ import com.ama.hungrypenguin.util.PrefsEventHandler;
 import com.ama.hungrypenguin.util.SharedPrefsHelper;
 import com.bumptech.glide.Glide;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 /**
@@ -54,6 +56,7 @@ public class DishesAdapter extends
         holder.title.setText(dish.name);
         holder.cost.setText(Double.toString(dish.cost));
         holder.cost.setTag(dish.id);
+        holder.stats.setText(dish.trendingStats + " Pengu's bought this");
 
         int qty = sharedPrefsHelper.getValue(dish.id);
         if(qty > 0) {
@@ -77,7 +80,6 @@ public class DishesAdapter extends
                     Dish d = SampleData.getDish((Integer) v.getTag());
                     b.setText("$" + d.cost + "(" + String.valueOf(qty) + ")");
                 }
-//                handler.showState();
             }
         });
 
@@ -97,10 +99,12 @@ public class DishesAdapter extends
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView thumbnail;
         TextView title;
+        TextView stats;
         Button cost;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            stats = (TextView) itemView.findViewById(R.id.stats);
             thumbnail = (ImageView) itemView.findViewById(R.id.thumbnail);
             title = (TextView) itemView.findViewById(R.id.title);
             cost = (Button) itemView.findViewById(R.id.costButton);

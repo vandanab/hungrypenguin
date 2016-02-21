@@ -11,12 +11,15 @@ public class Dish {
     public String name;
     public double cost;
     public ArrayList<String> ingredients;
+    public int trendingStats;
 
-    public Dish(int id, String imageUrl, String name, double cost, ArrayList<String> ingredients) {
+    public Dish(int id, String imageUrl, String name, double cost, ArrayList<String> ingredients,
+                int stats) {
         this.id = id;
         this.imageUrl = imageUrl;
         this.name = name;
         this.cost = cost;
         this.ingredients = ingredients;
+        this.trendingStats = stats;
     }
 }
