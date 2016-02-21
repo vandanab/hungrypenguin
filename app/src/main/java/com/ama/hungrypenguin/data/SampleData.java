@@ -46,6 +46,10 @@ public class SampleData {
         return dishes.subList(1, 1);
     }
 
+    public static Dish getDish(int index) {
+        return dishes.get(index);
+    }
+
     public static List<List<Dish>> getDishesData() {
         List<List<Dish>> dishesLists = new ArrayList<>();
         dishesLists.add(getDishes());
