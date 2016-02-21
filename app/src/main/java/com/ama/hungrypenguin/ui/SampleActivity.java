@@ -1,32 +1,25 @@
 package com.ama.hungrypenguin.ui;
 
+import android.os.Bundle;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
-import android.nfc.tech.MifareUltralight;
-import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
-import android.view.animation.OvershootInterpolator;
-import android.widget.Toast;
 
 import com.ama.hungrypenguin.R;
 import com.ama.hungrypenguin.adapter.RVSampleAdapter;
 import com.ama.hungrypenguin.data.RestaurantData;
 import com.ama.hungrypenguin.model.Restaurant;
-import com.ama.hungrypenguin.util.ItemClickListener;
+import com.ama.hungrypenguin.util.SharedPrefsHelper;
 
 import java.nio.charset.Charset;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -50,6 +43,10 @@ public class SampleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sample);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // clear the orderlist
+        SharedPrefsHelper mSharedPrefs = new SharedPrefsHelper(this);
+        mSharedPrefs.clear();
 
         resolveIntent(getIntent());
         mAdapter = NfcAdapter.getDefaultAdapter(this);
