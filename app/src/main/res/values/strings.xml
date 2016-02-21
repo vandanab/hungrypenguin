@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HungryPenguin</string>
+    <string name="app_name">Hungry Penguin</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_sample">Restaurants</string>
     <string name="title_activity_checkout_activity">Checkout</string>
