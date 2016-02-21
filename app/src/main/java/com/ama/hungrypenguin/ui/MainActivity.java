@@ -18,6 +18,7 @@ import com.ama.hungrypenguin.R;
 public class MainActivity extends AppCompatActivity {
 
     FragmentPagerAdapter adapterViewPager;
+    String title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,12 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        this.setTitle(getIntent().getStringExtra("name"));
+        if (savedInstanceState != null) {
+            title = savedInstanceState.getString("title");
+        } else {
+            title = getIntent().getStringExtra("name");
+        }
+        this.setTitle(title);
         // Set up view pager
         ViewPager viewpager = (ViewPager) findViewById(R.id.viewpager);
         adapterViewPager = new MyPagerAdapter(getSupportFragmentManager());
@@ -62,6 +68,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        // Save the user's current game state
+        savedInstanceState.putString("title", title);
+
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
     }
 
     public void gotoDetail(int id) {
